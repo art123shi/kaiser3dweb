@@ -5,37 +5,41 @@ import { Plus, Minus } from "lucide-react";
 import clsx from "clsx";
 
 const faqs = [
-  { 
-    question: "How long does a 3D project take?", 
-    answer: "Timelines depend on complexity. A standard 3D product configurator typically takes 4-6 weeks. Complex WebGL environments or Virtual Showrooms usually range from 8-12 weeks, including modeling, development, and QA testing." 
+  {
+    question: "What do I actually have to do?",
+    answer: "Film short clips on your phone while you work and add them to the shared album we set up. If you want to approve posts, that is one tap per post. Everything else is on us.",
   },
-  { 
-    question: "Does 3D slow down my website?", 
-    answer: "Not with us. We are performance-obsessed. We use Draco compression to reduce file sizes by up to 90% and implement 'lazy loading', meaning 3D assets only load when they enter the viewport. Your Core Web Vitals will remain green." 
+  {
+    question: "What can I send you?",
+    answer: "Phone videos, photos, voice memos and screen recordings. Rough is fine. A shaky 40 second clip of a real job usually does better than a polished advert.",
   },
-  { 
-    question: "Can you integrate with my existing store?", 
-    answer: "Yes. We specialize in headless commerce integrations. We can push configuration data (color, parts, price) directly to the cart sessions of Shopify, WooCommerce, Magento, or custom enterprise ERPs." 
+  {
+    question: "Which platforms do you post to?",
+    answer: "Instagram, Facebook, YouTube Shorts and TikTok. We start with the ones where your customers already are and add others later.",
   },
-  { 
-    question: "Do I own the 3D assets you create?", 
-    answer: "Absolutely. Once the project is paid for, you own 100% of the Intellectual Property, including the 3D models (GLTF/GLB files), textures, and source code. We do not hold your assets hostage." 
+  {
+    question: "Will you post without asking me?",
+    answer: "That is your choice. You can approve every post before it goes out, or let the calendar run and only step in when you want to.",
   },
-  { 
-    question: "Do I need to provide the 3D models?", 
-    answer: "Ideally, yes (CAD or STEP files). However, if you don't have them, our in-house 3D artists can model your products from scratch using reference photos and measurements. We aim for photorealistic accuracy." 
+  {
+    question: "Do I have to hand over my passwords?",
+    answer: "Where a platform offers partner or manager access, we use that. You stay the owner of your accounts and can remove us whenever you like.",
   },
-  { 
-    question: "What is the cost of a 3D Configurator?", 
-    answer: "Costs vary based on the number of products and customization logic. A simple viewer starts in the low thousands, while full-scale configurators with complex logic are a larger investment. We provide fixed-price proposals after a brief discovery call." 
+  {
+    question: "Who owns the content?",
+    answer: "You do. The footage is yours and so are the finished videos, captions and posts.",
   },
-  { 
-    question: "Do you offer post-launch support?", 
-    answer: "Yes. We offer monthly maintenance packages to keep your dependencies updated, monitor performance, and make minor content updates. We ensure your 3D experience remains future-proof as browsers evolve." 
+  {
+    question: "What does it cost?",
+    answer: "It depends on how many accounts you have and how often you want to post. Tell us about your business and we will send you a fixed monthly price.",
   },
-  { 
-    question: "Does this work on Mobile phones?", 
-    answer: "Yes. In fact, we develop 'Mobile First'. Our Touch controls are optimized for thumbs, and we ensure high frame rates (60fps) on iOS and Android devices without draining battery life excessively." 
+  {
+    question: "What is the Business Box?",
+    answer: "A small computer we install at your premises and manage remotely. It can record your cameras, hold your files and training material, and run the tools your business needs. It is in early access, so ask us if you want to be one of the first.",
+  },
+  {
+    question: "Do you still build 3D configurators?",
+    answer: "Yes. That is where we started, and you can try the one we built for Big Bear Vans. If your product is something customers want to customise before they buy, ask us about it.",
   },
 ];
 
@@ -54,7 +58,7 @@ export default function FAQ() {
             Frequently Asked <span className="accent-text">Questions</span>
           </h2>
           <p className="text-muted text-lg">
-            Everything you need to know about our process and technology.
+            The things owners ask us before they start.
           </p>
         </div>
 
@@ -67,7 +71,7 @@ export default function FAQ() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
                 key={index} 
                 onClick={() => setActiveIndex(isOpen ? null : index)}
                 className={clsx(

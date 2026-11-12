@@ -10,13 +10,12 @@ import clsx from "clsx";
 
 // Define your menu items here
 const navLinks = [
-  { name: "About", href: "/about" },           // Points to src/app/(main)/about/page.tsx
-  { name: "Services", href: "/services" },     // Points to src/app/(main)/services/page.tsx
-  { name: "Process", href: "/process" },      // Anchor link to Home Page section
-  { name: "Work", href: "/work" },             // Points to src/app/(main)/work/page.tsx
-  { name: "Expertise", href: "/expertise" },
-  { name: "Insights", href: "/insights" },  // Anchor link to Home Page section
-  { name: "FAQs", href: "/#faq" },              // Anchor link to Home Page section
+  { name: "Services", href: "/services" },
+  { name: "How it works", href: "/process" },
+  { name: "Work", href: "/work" },
+  { name: "About", href: "/about" },
+  { name: "Insights", href: "/insights" },
+  { name: "FAQs", href: "/#faq" },
 ];
 
 export default function Header() {
@@ -108,7 +107,7 @@ export default function Header() {
               "accent-bg shadow-lg shadow-accent-start/20 hover:shadow-accent-start/40"
             )}
           >
-            Start Project
+            Get started
           </Link>
         </div>
 
@@ -156,7 +155,7 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-4 px-8 py-3 rounded-full text-xl font-bold accent-bg text-white"
               >
-                Start Project
+                Get started
               </Link>
 
               {/* Mobile Theme Toggle */}

@@ -13,8 +13,18 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Kaiser3DWeb | Interactive 3D Websites",
-  description: "High-performance 3D product configurators...",
+  metadataBase: new URL("https://kaiser3dweb.com"),
+  title: "Kaiser3DWeb | Social media and automation for small businesses",
+  description:
+    "Send us raw phone videos and voice memos. We edit, caption, schedule and post them to your social accounts. We also set up on-site automation and 3D product configurators.",
+  openGraph: {
+    title: "Send us your clips. We run your social media.",
+    description:
+      "Done-for-you social media, on-site automation and 3D configurators for small businesses.",
+    url: "https://kaiser3dweb.com",
+    siteName: "Kaiser3DWeb",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

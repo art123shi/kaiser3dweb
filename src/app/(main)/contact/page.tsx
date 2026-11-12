@@ -5,24 +5,9 @@ import  Input  from '@/components/ui/Input';
 import  TextArea  from '@/components/ui/TextArea'; 
 import { Button } from '@/components/ui/Button';   
 
-// Enums matching your backend Schema
-const PROJECT_TYPES = [
-    '3D Modeling',
-    'Unreal Engine Dev',
-    'Unity Dev',
-    'WebGL/Three.js',
-    'VR/AR Experience',
-    'Architectural Visualization',
-    'Other'
-];
+import { SITE, SERVICE_OPTIONS } from '@/lib/site';
 
-const BUDGET_RANGES = [
-    'Under $5k',
-    '$5k - $15k',
-    '$15k - $50k',
-    '$50k+',
-    'Not Disclosed'
-];
+const PROJECT_TYPES = SERVICE_OPTIONS;
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -57,7 +42,7 @@ export default function ContactPage() {
             const data = await res.json();
 
             if (res.ok) {
-                setStatus({ type: 'success', message: 'Message sent! We will contact you shortly.' });
+                setStatus({ type: 'success', message: 'Thanks, we have it. We will get back to you shortly.' });
                 // Reset form
                 setFormData({
                     clientName: '',
@@ -85,25 +70,26 @@ export default function ContactPage() {
             
             <div className="container mx-auto max-w-5xl">
                 <div className="text-center mb-16">
-                    <h1 className="text-5xl font-bold mb-6">Ready to Build Your <span className="accent-text">3D Future?</span></h1>
-                    <p className="text-xl text-muted">Let's talk. We can provide a complimentary consultation and audit.</p>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-6">Tell us about your <span className="accent-text">business</span></h1>
+                    <p className="text-xl text-muted">A few lines is enough. We will reply with what we would do for you and a fixed monthly price.</p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8 items-start">
                     {/* Info Sidebar */}
                     <div className="md:col-span-1 space-y-8 sticky top-32">
                         <div>
-                            <h3 className="font-bold text-lg mb-2">Email Us</h3>
-                            <a href="mailto:contact@kaiser3dweb.com" className="text-muted hover:text-accent-start transition">
-                                contact@kaiser3dweb.com
-                            </a>
+                            <h3 className="font-bold text-lg mb-2">What happens next</h3>
+                            <ol className="space-y-2 text-muted list-decimal list-inside">
+                                <li>We read your note and look at your current accounts.</li>
+                                <li>We reply with a short plan and a price.</li>
+                                <li>If you like it, we set up your shared album and start.</li>
+                            </ol>
                         </div>
                         <div>
-                            <h3 className="font-bold text-lg mb-2">Call Us</h3>
-                            <p className="text-muted">+1 (951) 441-9719</p>
-                        </div>
-                        <div className="p-6 rounded-xl bg-accent-start/5 border border-accent-start/10">
-                            <p className="text-sm text-accent-start font-semibold">"Kaiser3DWeb transformed our conversion rates."</p>
+                            <h3 className="font-bold text-lg mb-2">Prefer to call?</h3>
+                            <a href={SITE.phoneHref} className="text-muted hover:text-accent-start transition">
+                                {SITE.phoneDisplay}
+                            </a>
                         </div>
                     </div>
 
@@ -126,7 +112,7 @@ export default function ContactPage() {
                                     // label="Company Name *" 
                                     name="companyName" 
                                     value={formData.companyName}
-                                    placeholder="Company Name *" 
+                                    placeholder="Business Name *" 
                                     onChange={handleChange} 
                                     required
                                     className="bg-input border-border focus:border-accent-start w-full"
@@ -156,34 +142,19 @@ export default function ContactPage() {
                                 />
                             </div>
 
-                            {/* Project Type & Budget Row (Custom Selects) */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="flex flex-col gap-2">
-                                    <label className="text-sm font-medium">Project Type</label>
-                                    <select 
-                                        name="projectType"
-                                        value={formData.projectType}
-                                        onChange={handleChange}
-                                        className="h-11 px-3 rounded-md bg-input border border-border focus:border-accent-start focus:ring-1 focus:ring-accent-start outline-none transition-colors"
-                                    >
-                                        {PROJECT_TYPES.map(type => (
-                                            <option key={type} value={type}>{type}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className="flex flex-col gap-2">
-                                    <label className="text-sm font-medium">Budget Range</label>
-                                    <select 
-                                        name="budgetRange"
-                                        value={formData.budgetRange}
-                                        onChange={handleChange}
-                                        className="h-11 px-3 rounded-md bg-input border border-border focus:border-accent-start focus:ring-1 focus:ring-accent-start outline-none transition-colors"
-                                    >
-                                        {BUDGET_RANGES.map(range => (
-                                            <option key={range} value={range}>{range}</option>
-                                        ))}
-                                    </select>
-                                </div>
+                            <div className="flex flex-col gap-2">
+                                <label htmlFor="projectType" className="text-sm font-medium">What do you need?</label>
+                                <select
+                                    id="projectType"
+                                    name="projectType"
+                                    value={formData.projectType}
+                                    onChange={handleChange}
+                                    className="h-11 px-3 rounded-md bg-input border border-border focus:border-accent-start focus:ring-1 focus:ring-accent-start outline-none transition-colors"
+                                >
+                                    {PROJECT_TYPES.map(type => (
+                                        <option key={type} value={type}>{type}</option>
+                                    ))}
+                                </select>
                             </div>
 
                             <TextArea 
@@ -191,7 +162,7 @@ export default function ContactPage() {
                                 name="projectDescription" 
                                 value={formData.projectDescription}
                                 rows={5} 
-                                placeholder="Project Details... Tell us about your goals, technical requirements, and timeline." 
+                                placeholder="What does your business do, and what would you like off your plate? Links to your current accounts help." 
                                 onChange={handleChange} 
                                 required
                                 className="bg-input border-border focus:border-accent-start"
@@ -202,7 +173,7 @@ export default function ContactPage() {
                                 disabled={isSubmitting}
                                 className="w-full py-4 text-lg font-bold accent-bg shadow-lg shadow-accent-start/25 hover:shadow-accent-start/40 disabled:opacity-70 disabled:cursor-not-allowed"
                             >
-                                {isSubmitting ? 'Sending Request...' : 'Request Consultation'}
+                                {isSubmitting ? 'Sending...' : 'Send'}
                             </Button>
 
                             {/* Status Messages */}

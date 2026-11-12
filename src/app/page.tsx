@@ -1,8 +1,6 @@
 import Hero from "@/components/sections/Hero";
-import TechStack from "@/components/sections/TechStack";
 import Process from "@/components/sections/Process";
-import Testimonials from "@/components/sections/Testimonials"; // New
-import FAQ from "@/components/sections/FAQ"; // New
+import FAQ from "@/components/sections/FAQ";
 import Services from "@/components/sections/Services";
 import Work from "@/components/sections/Work";
 import Contact from "@/components/sections/Contact";
@@ -12,17 +10,13 @@ export default function Home() {
     <>
       <Hero />
       <div className="section-alt">
-        <TechStack />
+        <Process />
       </div>
       <Services />
       <div className="section-alt">
-        <Process />
+        <Work />
       </div>
-      <Work />
-      <div className="section-alt">
-        <Testimonials /> {/* Adds social proof */}
-      </div>
-      <FAQ /> {/* Adds objection handling */}
+      <FAQ />
       <div className="section-alt">
         <Contact />
       </div>

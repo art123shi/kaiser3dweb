@@ -1,107 +1,77 @@
-"use client";
-import Process from "@/components/sections/Process"; // Import the detailed text steps we made earlier
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
+import Process from "@/components/sections/Process";
+
+export const metadata = {
+  title: "How it works | Kaiser3DWeb",
+  description:
+    "You film on your phone and drop the files in a shared album. We edit, caption, schedule and post.",
+};
+
+const dayOne = [
+  "A shared album or folder for your clips (we set it up with you)",
+  "Which accounts you want us to run",
+  "The basics of your business and your logo",
+  "Two or three accounts whose style you like",
+  "Whether you want to approve each post before it goes out",
+];
+
+const rhythm = [
+  {
+    title: "Every week",
+    desc: "You add clips whenever something worth showing happens. If the album goes quiet, we send a short note with ideas for what to film.",
+  },
+  {
+    title: "Before each post",
+    desc: "If you chose approvals, you get a preview and can say yes, ask for a change or skip it.",
+  },
+  {
+    title: "Every month",
+    desc: "We tell you which posts did well and what we will do more of.",
+  },
+];
 
 export default function ProcessPage() {
   return (
-    <div className="pt-24">
-      
-      {/* 1. Intro Hero */}
-      <section className="container mx-auto px-6 text-center mb-20">
-        <h1 className="text-5xl font-bold mb-6">
-          From Concept to <span className="accent-text">Reality</span>
-        </h1>
-        <p className="text-xl text-muted max-w-3xl mx-auto">
-          We have refined a streamlined pipeline that takes abstract ideas and turns them into 
-          interactive, revenue-generating 3D assets.
-        </p>
+    <div className="pt-24 pb-20 min-h-screen">
+      <Process as="h1" />
+
+      <section className="section-alt py-20">
+        <div className="container mx-auto px-6 max-w-5xl grid md:grid-cols-2 gap-12">
+          <div>
+            <h2 className="text-3xl font-bold mb-6">What we need on day one</h2>
+            <ul className="space-y-4">
+              {dayOne.map((item) => (
+                <li key={item} className="flex gap-3 text-primary">
+                  <Check size={20} className="text-accent-start shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="text-3xl font-bold mb-6">After that</h2>
+            <div className="space-y-6">
+              {rhythm.map((r) => (
+                <div key={r.title}>
+                  <h3 className="font-bold text-primary mb-1">{r.title}</h3>
+                  <p className="text-muted leading-relaxed">{r.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* 2. The Detailed Steps Component (Reused) */}
-      {/* This renders the cards with text (Discovery, Asset Creation, etc.) */}
-      <Process />
-
-      {/* 3. The "Visual Pipeline" (Recreated from your HTML #process-3d) */}
-      <PipelineVisuals />
-
-      {/* 4. Closing */}
-      <section className="py-24 text-center">
-        <h2 className="text-3xl font-bold mb-6">Transparent & Agile</h2>
-        <p className="text-muted max-w-2xl mx-auto mb-8">
-            We work in two-week sprints, providing you with preview links at every stage. 
-            You never have to guess what your project looks like.
-        </p>
-        <a href="/contact" className="px-8 py-3 rounded-full border border-border hover:bg-secondary font-medium transition-colors">
-            Start a Project
-        </a>
+      <section className="container mx-auto px-6 mt-20 text-center">
+        <h2 className="text-3xl font-bold mb-6">Ready to hand it over?</h2>
+        <Link
+          href="/contact"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-full accent-bg font-semibold shadow-lg"
+        >
+          Get started <ArrowRight size={18} />
+        </Link>
       </section>
     </div>
   );
-}
-
-// --- Sub-Component for the "Sticky Layers" Visual ---
-function PipelineVisuals() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  return (
-    <section ref={containerRef} className="py-24 bg-secondary/30 overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">The Visual Pipeline</h2>
-            <p className="text-muted">See how a product evolves through our workflow.</p>
-        </div>
-
-        <div className="relative max-w-5xl mx-auto min-h-[100vh]">
-            {/* Layer 1: Wireframe */}
-            <PipelineLayer 
-                img="/assets/img/step-one.jpg" 
-                label="Step 1: Wireframe & Blueprint" 
-                index={0} 
-                progress={scrollYProgress} 
-            />
-            
-            {/* Layer 2: Clay Model */}
-            <PipelineLayer 
-                img="/assets/8.png" 
-                label="Step 2: High-Fidelity Modeling" 
-                index={1} 
-                progress={scrollYProgress} 
-            />
-
-            {/* Layer 3: Final Render */}
-            <PipelineLayer 
-                img="/assets/9.png" 
-                label="Step 3: WebGL Integration & Lighting" 
-                index={2} 
-                progress={scrollYProgress} 
-            />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PipelineLayer({ img, label, index, progress }: { img: string, label: string, index: number, progress: any }) {
-    // Parallax logic: Elements move at different speeds to create stacking effect
-    const y = useTransform(progress, [0, 1], [100 * (index + 1), -100 * (index + 1)]);
-    const opacity = useTransform(progress, [0, 0.2 + (index * 0.1), 0.8], [0, 1, 1]);
-
-    return (
-        <motion.div 
-            style={{ y, opacity }}
-            className={`sticky top-32 mb-24 w-full aspect-video rounded-2xl overflow-hidden border border-border shadow-2xl z-${index * 10}`}
-        >
-            <div className="absolute inset-0 bg-primary/80 backdrop-blur-sm z-10 flex items-end p-8">
-                <span className="bg-accent-start text-white px-4 py-2 rounded-lg font-bold text-lg shadow-lg">
-                    {label}
-                </span>
-            </div>
-            <img src={img} alt={label} className="w-full h-full object-cover" />
-        </motion.div>
-    );
 }

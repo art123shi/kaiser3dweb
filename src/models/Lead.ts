@@ -31,7 +31,12 @@ const LeadSchema: Schema = new Schema({
   projectType: {
     type: String,
     required: true,
-    enum: ['3D Modeling', 'Unreal Engine Dev', 'Unity Dev', 'WebGL/Three.js', 'VR/AR Experience', 'Architectural Visualization', 'Other']
+    // Current options first (see SERVICE_OPTIONS in src/lib/site.ts).
+    // The older values stay so leads saved before the repositioning still validate.
+    enum: [
+      'Social media autopilot', 'On-site Business Box', '3D configurator or website', 'Not sure yet',
+      '3D Modeling', 'Unreal Engine Dev', 'Unity Dev', 'WebGL/Three.js', 'VR/AR Experience', 'Architectural Visualization', 'Other'
+    ]
   },
   budgetRange: {
     type: String,

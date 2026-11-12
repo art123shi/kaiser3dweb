@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
     ADMIN_USER: process.env.ADMIN_USER,
     ADMIN_PASS: process.env.ADMIN_PASS,
   },
+  async redirects() {
+    return [
+      // The old tech-stack page was folded into /services.
+      { source: "/expertise", destination: "/services", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

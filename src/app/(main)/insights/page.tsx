@@ -12,8 +12,8 @@ async function getPosts() {
 }
 
 export const metadata = {
-  title: "Insights & 3D Trends | Kaiser3DWeb",
-  description: "Expert articles on WebGL, 3D Product Configurators, and the future of E-commerce.",
+  title: "Insights | Kaiser3DWeb",
+  description: "Notes on social media, automation and 3D for small businesses.",
 };
 
 export default async function InsightsPage() {
@@ -26,10 +26,10 @@ export default async function InsightsPage() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold mb-6">
-            Industry <span className="text-gradient">Insights</span>
+            <span className="text-gradient">Insights</span>
           </h1>
           <p className="text-muted text-xl max-w-2xl mx-auto">
-            Deep dives into 3D technology, conversion optimization, and the future of digital retail.
+            Notes on social media, automation and 3D for small businesses.
           </p>
         </div>
 

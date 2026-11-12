@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Twitter, Linkedin, Github, Mail } from "lucide-react";
+import { SITE } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -17,20 +17,8 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-slate-400 max-w-sm mb-6">
-              Transforming digital commerce with immersive, high-performance 3D and AR experiences. 
-              We build the future of the web.
+              Done-for-you social media, on-site automation and 3D configurators for small businesses.
             </p>
-            <div className="flex gap-4">
-              {[Twitter, Linkedin, Github, Mail].map((Icon, i) => (
-                <a 
-                  key={i} 
-                  href="#" 
-                  className="p-2 rounded-full bg-white/5 hover:bg-accent-start hover:text-white transition-colors text-slate-400"
-                >
-                  <Icon size={18} />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Links Column */}
@@ -39,8 +27,8 @@ export default function Footer() {
             <ul className="space-y-4">
               {/* Added '/' to hrefs to ensure absolute paths (fixes navigation bugs) */}
               <li><Link href="/services" className="hover:text-accent-start transition">Services</Link></li>
-              <li><Link href="/work" className="hover:text-accent-start transition">Case Studies</Link></li>
-              <li><Link href="/process" className="hover:text-accent-start transition">Our Process</Link></li>
+              <li><Link href="/work" className="hover:text-accent-start transition">Work</Link></li>
+              <li><Link href="/process" className="hover:text-accent-start transition">How it works</Link></li>
               <li><Link href="/#faq" className="hover:text-accent-start transition">FAQs</Link></li>
             </ul>
           </div>
@@ -49,15 +37,15 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-white mb-6">Get in Touch</h4>
             <ul className="space-y-4 text-slate-400">
-              <li>Big Bear, CA</li>
+              <li>{SITE.location}</li>
               <li>
-                <a href="mailto:hello@kaiser3dweb.com" className="hover:text-accent-start transition-colors">
-                  hello@kaiser3dweb.com
+                <a href={`mailto:${SITE.email}`} className="hover:text-accent-start transition-colors">
+                  {SITE.email}
                 </a>
               </li>
               <li>
-                <a href="tel:+19514419719" className="hover:text-accent-start transition-colors">
-                  +1 (951) 441-9719
+                <a href={SITE.phoneHref} className="hover:text-accent-start transition-colors">
+                  {SITE.phoneDisplay}
                 </a>
               </li>
             </ul>
