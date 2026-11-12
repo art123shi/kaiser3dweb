@@ -56,7 +56,7 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {services.map(({ id, icon: Icon, title, tag, desc, points }) => (
             <div key={id} className="glass-card rounded-3xl p-8 flex flex-col">
               <div className="flex items-center justify-between mb-6">

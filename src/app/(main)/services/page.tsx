@@ -60,7 +60,7 @@ export default function ServicesPage() {
               )}
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4 text-muted leading-relaxed">
                 <p className="text-primary font-medium">{desc}</p>
                 {detail[id].body.map((p) => (
@@ -71,9 +71,9 @@ export default function ServicesPage() {
                     href={detail[id].extra!.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-semibold text-accent-start hover:underline"
+                    className="font-semibold text-accent-start hover:underline"
                   >
-                    {detail[id].extra!.label} <ArrowUpRight size={16} />
+                    {detail[id].extra!.label} <ArrowUpRight size={16} className="inline align-[-2px]" />
                   </a>
                 )}
               </div>

@@ -16,7 +16,7 @@ export default function Work({ as: Heading = "h2" }: { as?: "h1" | "h2" }) {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
           {/* Short videos */}
           <div className="lg:col-span-3">
             <h3 className="text-xl font-bold mb-2 text-primary">Short videos from shop footage</h3>

@@ -34,7 +34,7 @@ export default async function InsightsPage() {
         </div>
 
         {/* Blog Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post: any) => (
             <Link href={`/insights/${post.slug}`} key={post._id} className="group">
               <div className="glass-card rounded-2xl overflow-hidden h-full flex flex-col hover:border-accent-start/50 transition-all duration-300 hover:-translate-y-2">

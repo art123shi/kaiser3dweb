@@ -37,10 +37,10 @@ export default function Process({ as: Heading = "h2" }: { as?: "h1" | "h2" }) {
           </p>
         </div>
 
-        <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map(({ icon: Icon, title, desc }, i) => (
             <li key={title} className="glass-card rounded-3xl p-8 relative overflow-hidden">
-              <span className="absolute -top-4 -right-2 text-8xl font-bold text-accent-start/10 select-none">
+              <span className="absolute top-3 right-5 text-7xl leading-none font-bold text-accent-start opacity-10 select-none">
                 {i + 1}
               </span>
               <div className="w-12 h-12 rounded-2xl accent-bg flex items-center justify-center mb-6 shadow-lg">

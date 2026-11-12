@@ -74,7 +74,7 @@ export default function ContactPage() {
                     <p className="text-xl text-muted">A few lines is enough. We will reply with what we would do for you and a fixed monthly price.</p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
                     {/* Info Sidebar */}
                     <div className="md:col-span-1 space-y-8 sticky top-32">
                         <div>

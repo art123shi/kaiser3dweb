@@ -113,8 +113,10 @@ export default function Header() {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className={clsx("lg:hidden p-2", isScrolled ? "text-white" : "text-primary")}
+          className={clsx("lg:hidden p-2.5 -mr-2", isScrolled ? "text-white" : "text-primary")}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileMenuOpen}
         >
           {mobileMenuOpen ? <X /> : <Menu />}
         </button>
@@ -125,7 +127,7 @@ export default function Header() {
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100vh" }}
+            animate={{ opacity: 1, height: "100dvh" }}
             exit={{ opacity: 0, height: 0 }}
             // Changed bg-primary to bg-slate-950 (Dark) and text-white
             className="fixed top-0 left-0 w-full bg-slate-950 text-white z-40 overflow-hidden flex flex-col pt-24 px-6"
@@ -134,6 +136,7 @@ export default function Header() {
             <button 
               className="absolute top-6 right-6 p-2 text-white"
               onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close menu"
             >
               <X size={32} />
             </button>

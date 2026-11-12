@@ -61,7 +61,7 @@ export default function AboutPage() {
 
       <section className="container mx-auto px-6 py-20">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-primary">How we work</h2>
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {values.map(({ icon: Icon, title, desc }) => (
             <div key={title} className="glass-card rounded-3xl p-8">
               <div className="w-12 h-12 rounded-2xl accent-bg flex items-center justify-center mb-6 shadow-lg">

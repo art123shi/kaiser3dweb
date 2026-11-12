@@ -6,7 +6,7 @@ export default function Footer() {
     // FORCED DARK THEME: bg-slate-950 ensures it stays dark even in Light Mode
     <footer className="bg-slate-950 text-slate-300 border-t border-white/10 pt-20 pb-10">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           
           {/* Brand Column */}
           <div className="md:col-span-2">

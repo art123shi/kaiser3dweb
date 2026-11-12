@@ -5,7 +5,7 @@ import { ArrowRight, ArrowDown, Film, Mic, CheckCircle2, Clock } from "lucide-re
 
 const uploads = [
   { icon: Film, name: "IMG_4821.MOV", meta: "0:47" },
-  { icon: Mic, name: "Voice memo 12.m4a", meta: "1:05" },
+  { icon: Mic, name: "Memo 12.m4a", meta: "1:05" },
   { icon: Film, name: "IMG_4830.MOV", meta: "2:13" },
 ];
 
@@ -17,14 +17,14 @@ const posts = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
+    <section className="relative lg:min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent-start/20 rounded-full blur-[100px]" />
         <div className="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] opacity-[0.03]" />
       </div>
 
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-        <div className="max-w-2xl">
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-2xl min-w-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -62,16 +62,16 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
           >
-            <Link href="/contact" className="group relative px-8 py-4 rounded-full font-semibold overflow-hidden">
+            <Link href="/contact" className="group relative px-8 py-4 rounded-full font-semibold overflow-hidden text-center">
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-accent-start to-accent-end opacity-100 group-hover:opacity-90 transition-opacity" />
-              <span className="relative text-white flex items-center gap-2">
+              <span className="relative text-white flex items-center justify-center gap-2">
                 Get started <ArrowRight size={18} />
               </span>
             </Link>
 
-            <Link href="/process" className="px-8 py-4 rounded-full border border-border hover:bg-secondary transition-colors font-medium text-primary">
+            <Link href="/process" className="px-8 py-4 rounded-full border border-border hover:bg-secondary transition-colors font-medium text-primary text-center">
               See how it works
             </Link>
           </motion.div>
@@ -82,7 +82,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative w-full"
+          className="relative w-full min-w-0"
           aria-hidden="true"
         >
           <div className="relative bg-gradient-to-tr from-accent-start/10 to-transparent rounded-[2rem] border border-border p-5 sm:p-8 shadow-2xl">
@@ -91,8 +91,8 @@ export default function Hero() {
               {uploads.map(({ icon: Icon, name, meta }) => (
                 <div key={name} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-card border border-border">
                   <Icon size={18} className="text-accent-start shrink-0" />
-                  <span className="text-sm font-medium text-primary truncate">{name}</span>
-                  <span className="ml-auto text-xs text-muted">{meta}</span>
+                  <span className="min-w-0 text-sm font-medium text-primary truncate">{name}</span>
+                  <span className="ml-auto shrink-0 text-xs text-muted">{meta}</span>
                 </div>
               ))}
             </div>
@@ -107,26 +107,28 @@ export default function Hero() {
             <div className="space-y-2">
               {posts.map((p) => (
                 <div key={p.day} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-card border border-border">
-                  <div className="w-12 shrink-0 text-center">
+                  <div className="w-14 shrink-0 text-center">
                     <div className="text-sm font-bold text-primary">{p.day}</div>
-                    <div className="text-[10px] text-muted whitespace-nowrap">{p.time}</div>
+                    <div className="text-[11px] text-muted whitespace-nowrap">{p.time}</div>
                   </div>
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-bold uppercase tracking-wide text-accent-start">{p.kind}</div>
-                    <div className="text-sm font-medium text-primary truncate">{p.text}</div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-2 mb-0.5">
+                      <span className="text-[11px] font-bold uppercase tracking-wide text-accent-start">{p.kind}</span>
+                      <span
+                        className={`shrink-0 inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full ${
+                          p.ok ? "bg-green-500/10 text-green-600" : "bg-amber-500/10 text-amber-600"
+                        }`}
+                      >
+                        {p.ok ? <CheckCircle2 size={12} /> : <Clock size={12} />}
+                        {p.ok ? "Approved" : "Your OK"}
+                      </span>
+                    </div>
+                    <div className="text-sm font-medium text-primary leading-snug">{p.text}</div>
                   </div>
-                  <span
-                    className={`ml-auto shrink-0 inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-full ${
-                      p.ok ? "bg-green-500/10 text-green-600" : "bg-amber-500/10 text-amber-600"
-                    }`}
-                  >
-                    {p.ok ? <CheckCircle2 size={12} /> : <Clock size={12} />}
-                    {p.ok ? "Approved" : "Your OK"}
-                  </span>
                 </div>
               ))}
             </div>
-            <p className="text-[11px] text-muted mt-4 text-center">Example of a week</p>
+            <p className="text-xs text-muted mt-4 text-center">Example of a week</p>
           </div>
         </motion.div>
       </div>

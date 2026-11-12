@@ -37,7 +37,7 @@ export default function ProcessPage() {
       <Process as="h1" />
 
       <section className="section-alt py-20">
-        <div className="container mx-auto px-6 max-w-5xl grid md:grid-cols-2 gap-12">
+        <div className="container mx-auto px-6 max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <h2 className="text-3xl font-bold mb-6">What we need on day one</h2>
             <ul className="space-y-4">
