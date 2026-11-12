@@ -1,7 +1,8 @@
 // One place for the facts every page repeats.
 export const SITE = {
   name: "Kaiser3DWeb",
-  email: "hello@kaiser3dweb.com",
+  // No public email for now: hello@ and contact@ have no mailbox on the mail
+  // server and bounce. Add one here (and in the footer) once a mailbox exists.
   phoneDisplay: "+1 (951) 441-9719",
   phoneHref: "tel:+19514419719",
   location: "Big Bear, CA",

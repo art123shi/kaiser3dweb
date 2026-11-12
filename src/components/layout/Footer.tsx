@@ -39,9 +39,9 @@ export default function Footer() {
             <ul className="space-y-4 text-slate-400">
               <li>{SITE.location}</li>
               <li>
-                <a href={`mailto:${SITE.email}`} className="hover:text-accent-start transition-colors">
-                  {SITE.email}
-                </a>
+                <Link href="/contact" className="hover:text-accent-start transition-colors">
+                  Send us a message
+                </Link>
               </li>
               <li>
                 <a href={SITE.phoneHref} className="hover:text-accent-start transition-colors">
